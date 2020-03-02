@@ -10,9 +10,12 @@
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_StudentFinderSolution.-1570996103.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p=".git/info/exclude" t="IncludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="StudentFinder" t="IncludeRecursive">
+        <e p="Attributes.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="CreateStudentHelper.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -21,7 +24,10 @@
           </e>
         </e>
         <e p="Program.cs" t="Include" />
+        <e p="School.cs" t="Include" />
+        <e p="Student.cs" t="Include" />
         <e p="StudentFinder.csproj" t="IncludeRecursive" />
+        <e p="TestData.csv" t="Include" />
       </e>
       <e p="StudentFinder_Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
