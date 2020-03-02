@@ -54,20 +54,15 @@ namespace StudentFinder {
         private static void GetResults(Attributes.EyeColour eyes, Attributes.HairColour hair) {
             var school = InitSchool();
             var results = school.GetMatchingStudents(eyes, hair);
-            while (results.Count > 0) {
+            if (results.Count > 0) {
                 Console.WriteLine($"Found {results.Count} student/s with {eyes.ToString().ToLower()} eyes and {hair.ToString().ToLower()} hair: ");
                 foreach (var result in results) {
                     Console.WriteLine($"{result.Attributes.Name}, {result.Attributes.Age}");
                 }
-                Console.WriteLine($"Do you want to expel {results[0].Attributes.Name}?");
-                var answer = Console.ReadLine();
-                Console.WriteLine($"{results[0].Attributes.Name} has been expelled.\n");
-                school.RemoveStudent(results[0].Attributes);
-                results.Remove(results[0]);
-            } 
-            
-            Console.WriteLine($"No results found for children with {eyes} eyes and {hair} hair");
-            
+            }
+            else {
+                Console.WriteLine($"No results found for children with {eyes} eyes and {hair} hair");
+            }
         }
         
     }
