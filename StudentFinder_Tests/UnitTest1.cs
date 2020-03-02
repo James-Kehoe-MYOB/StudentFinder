@@ -19,12 +19,12 @@ namespace StudentFinder_Tests {
 
         [Fact]
         public void SchoolHasValidStudents() {
-            Assert.Equal("John", school.students[0].name);
+            Assert.IsType<Student>(school.students[0]);
         }
 
         [Fact]
         public void CanAddStudentsToSchool() {
-            Attributes frank_attributes = new Attributes("Frank", "Hazel", "Blonde", 15);
+            Attributes frank_attributes = new Attributes("Frank", Attributes.EyeColour.Hazel, Attributes.HairColour.Gray, 15);
             Student Frank = new Student(frank_attributes);
             school.AddStudent(Frank);
             
@@ -37,6 +37,30 @@ namespace StudentFinder_Tests {
             school.RemoveStudent(school.students.First());
             
             Assert.Equal(length_before - 1, school.students.Count);
+        }
+
+        [Fact]
+        public void CanParseEyeColour() {
+            string eyes = "blue";
+            Attributes.EyeColour? eyes_parsed = Parser.ParseEyes(eyes);
+            
+            Assert.Equal(Attributes.EyeColour.Blue, eyes_parsed);
+        }
+        
+        [Fact]
+        public void CanParseHairColour() {
+            string hair = "blonde";
+            Attributes.HairColour? hair_parsed = Parser.ParseHair(hair);
+            
+            Assert.Equal(Attributes.HairColour.Blonde, hair_parsed);
+        }
+
+        [Fact]
+        public void CanSearchForStudent() {
+            List<Student> result = new List<Student>();
+            result.Add(new Student(new Attributes("Libby", Attributes.EyeColour.Brown, Attributes.HairColour.Brown, 12)));
+            
+            Assert.NotStrictEqual(result[0].attributes, school.getMatchingStudents(Attributes.EyeColour.Brown, Attributes.HairColour.Brown)[0].attributes);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StudentFinder {
     public class School {
@@ -8,10 +9,10 @@ namespace StudentFinder {
             this.students = students;
         }
 
-        public List<Student> getMatchingStudents() {
-            List<Student> results = new List<Student>();
+        public List<Student> getMatchingStudents(Attributes.EyeColour eyes, Attributes.HairColour hair) {
+            IEnumerable<Student> results = students.Where(m => m.attributes.eyes == eyes).Where(m => m.attributes.hair == hair);
 
-            return results;
+            return results.ToList();
         }
 
         public void AddStudent(Student student) {
@@ -21,11 +22,9 @@ namespace StudentFinder {
         }
 
         public void RemoveStudent(Student student) {
-            //Check if student already in school
             if (students.Contains(student)) {
                 students.Remove(student);
             }
-            //if so, remove
         }
     }
 }

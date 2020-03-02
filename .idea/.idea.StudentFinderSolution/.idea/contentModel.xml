@@ -23,6 +23,7 @@
             </e>
           </e>
         </e>
+        <e p="Parser.cs" t="Include" />
         <e p="Program.cs" t="Include" />
         <e p="School.cs" t="Include" />
         <e p="Student.cs" t="Include" />
