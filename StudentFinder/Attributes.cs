@@ -18,16 +18,16 @@ namespace StudentFinder {
             Gray
         }
         
-        public string name { get; private set; }
-        public EyeColour eyes { get; internal set; }
-        public HairColour hair { get; private set; }
-        public int age { get; private set; }
+        public string Name { get; private set; }
+        public EyeColour Eyes { get; private set; }
+        public HairColour Hair { get; private set; }
+        public int Age { get; private set; }
 
         public Attributes(string name, EyeColour eyes, HairColour hair, int age) {
-            this.name = name;
-            this.eyes = eyes;
-            this.hair = hair;
-            this.age = age;
+            this.Name = name;
+            this.Eyes = eyes;
+            this.Hair = hair;
+            this.Age = age;
         }
         
     }

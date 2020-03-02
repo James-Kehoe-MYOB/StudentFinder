@@ -14,15 +14,15 @@ namespace StudentFinder {
 
         public List<Student> ProcessStudents() {
             List<Student> students = new List<Student>();
-            List<Attributes> student_attributes = new List<Attributes>();
+            List<Attributes> studentAttributes = new List<Attributes>();
             using (var reader = new StreamReader(_path))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {    
-                student_attributes = csv.GetRecords<Attributes>().ToList();
+                studentAttributes = csv.GetRecords<Attributes>().ToList();
             }
 
-            foreach (var attribute_set in student_attributes) {
-                students.Add(new Student(attribute_set));
+            foreach (var attributeSet in studentAttributes) {
+                students.Add(new Student(attributeSet));
             }
 
             return students;

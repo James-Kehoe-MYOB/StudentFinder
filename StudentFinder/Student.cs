@@ -6,10 +6,10 @@ using CsvHelper;
 
 namespace StudentFinder {
     public class Student {
-        public Attributes attributes { get; private set; }
+        public Attributes Attributes { get; private set; }
 
         public Student(Attributes attributes) {
-            this.attributes = attributes;
+            this.Attributes = attributes;
         }
 
     }

@@ -7,17 +7,21 @@ namespace StudentFinder {
 
             var eyes = GetEyes();
             var hair = GetHair();
-            GetResults(eyes,hair);
+            GetResults(eyes, hair);
 
         }
 
+//-----------------------------
+
         private static School InitSchool() {
-            string data = "/Users/james.kehoe/RiderProjects/StudentFinderSolution/StudentFinder/TestData.csv";
+            var data = "../../../TestData.csv";
             CreateStudentHelper studentHelper = new CreateStudentHelper(data);
             List<Student> students = studentHelper.ProcessStudents();
             School school = new School(students);
             return school;
         }
+        
+//-----------------------------
 
         private static Attributes.EyeColour GetEyes() {
             Console.Write("Enter an Eye Colour: ");
@@ -31,6 +35,8 @@ namespace StudentFinder {
             return eyes.GetValueOrDefault();
         }
         
+//-----------------------------
+        
         private static Attributes.HairColour GetHair() {
             Console.Write("Enter a Hair Colour: ");
             var hair = Parser.ParseHair(Console.ReadLine());
@@ -42,19 +48,25 @@ namespace StudentFinder {
 
             return hair.GetValueOrDefault();
         }
+        
+//-----------------------------
 
         private static void GetResults(Attributes.EyeColour eyes, Attributes.HairColour hair) {
             var school = InitSchool();
-            var results = school.getMatchingStudents(eyes, hair);
-            if (results.Count > 0) {
+            var results = school.GetMatchingStudents(eyes, hair);
+            while (results.Count > 0) {
                 Console.WriteLine($"Found {results.Count} student/s with {eyes.ToString().ToLower()} eyes and {hair.ToString().ToLower()} hair: ");
                 foreach (var result in results) {
-                    Console.WriteLine($"{result.attributes.name}, {result.attributes.age}");
+                    Console.WriteLine($"{result.Attributes.Name}, {result.Attributes.Age}");
                 }
-            }
-            else {
-                Console.WriteLine($"No results found for children with {eyes} eyes and {hair} hair");
-            }
+                Console.WriteLine($"Do you want to expel {results[0].Attributes.Name}?");
+                var answer = Console.ReadLine();
+                Console.WriteLine($"{results[0].Attributes.Name} has been expelled.\n");
+                school.RemoveStudent(results[0].Attributes);
+                results.Remove(results[0]);
+            } 
+            
+            Console.WriteLine($"No results found for children with {eyes} eyes and {hair} hair");
             
         }
         

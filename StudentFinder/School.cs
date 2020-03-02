@@ -3,27 +3,27 @@ using System.Linq;
 
 namespace StudentFinder {
     public class School {
-        public List<Student> students { get; private set; }
+        public List<Student> Students { get; private set; }
 
         public School(List<Student> students) {
-            this.students = students;
+            this.Students = students;
         }
 
-        public List<Student> getMatchingStudents(Attributes.EyeColour eyes, Attributes.HairColour hair) {
-            IEnumerable<Student> results = students.Where(m => m.attributes.eyes == eyes).Where(m => m.attributes.hair == hair);
+        public List<Student> GetMatchingStudents(Attributes.EyeColour eyes, Attributes.HairColour hair) {
+            IEnumerable<Student> results = Students.Where(m => m.Attributes.Eyes == eyes).Where(m => m.Attributes.Hair == hair);
 
             return results.ToList();
         }
 
         public void AddStudent(Student student) {
-            if (!students.Contains(student)) {
-                students.Add(student);
+            if (!Students.Contains(student)) {
+                Students.Add(student);
             }
         }
 
-        public void RemoveStudent(Student student) {
-            if (students.Contains(student)) {
-                students.Remove(student);
+        public void RemoveStudent(Attributes attributes) {
+            if (Students.Exists(m => m.Attributes == attributes)) {
+                Students.Remove(Students.Find(m => m.Attributes == attributes));
             }
         }
     }

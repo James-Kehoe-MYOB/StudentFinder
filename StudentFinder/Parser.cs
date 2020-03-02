@@ -7,16 +7,16 @@ namespace StudentFinder {
         }
 
         public static Attributes.EyeColour? ParseEyes(string eyes) {
-            if (Attributes.EyeColour.TryParse(eyes, true, out Attributes.EyeColour eyes_parsed)) {
-                return eyes_parsed;
+            if (Attributes.EyeColour.TryParse(eyes, true, out Attributes.EyeColour eyesParsed)) {
+                return eyesParsed;
             }
             
             return null;
         }
         
         public static Attributes.HairColour? ParseHair(string hair) {
-            if (Attributes.HairColour.TryParse(hair, true, out Attributes.HairColour hair_parsed)) {
-                return hair_parsed;
+            if (Attributes.HairColour.TryParse(hair, true, out Attributes.HairColour hairParsed)) {
+                return hairParsed;
             }
             return null;
         }
