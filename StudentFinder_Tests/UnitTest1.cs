@@ -7,10 +7,10 @@ using Xunit;
 
 namespace StudentFinder_Tests {
     public class UnitTest1 {
-        static string _data = "../../../TestData.csv";
-        static CreateStudentHelper _studentHelper = new CreateStudentHelper(_data);
-        static List<Student> _students = _studentHelper.ProcessStudents();
-        School _school = new School(_students);
+        private const string Data = "../../../TestData.csv";
+        private static readonly CreateStudentHelper StudentHelper = new CreateStudentHelper(Data);
+        private static readonly List<Student> Students = StudentHelper.ProcessStudents();
+        private readonly School _school = new School(Students);
         
         [Fact]
         public void SchoolIsNotEmpty() {
@@ -24,8 +24,8 @@ namespace StudentFinder_Tests {
 
         [Fact]
         public void CanAddStudentsToSchool() {
-            Attributes frankAttributes = new Attributes("Frank", Attributes.EyeColour.Hazel, Attributes.HairColour.Gray, 15);
-            Student frank = new Student(frankAttributes);
+            var frankAttributes = new Attributes("Frank", Attributes.EyeColour.Hazel, Attributes.HairColour.Gray, 15);
+            var frank = new Student(frankAttributes);
             _school.AddStudent(frank);
             
             Assert.Equal(frank, _school.Students.Last());
@@ -33,8 +33,8 @@ namespace StudentFinder_Tests {
 
         [Fact]
         public void CanRemoveStudentsFromSchool() {
-            Attributes bettyAttributes = new Attributes("Betty", Attributes.EyeColour.Brown, Attributes.HairColour.Red, 13);
-            Student betty = new Student(bettyAttributes);
+            var bettyAttributes = new Attributes("Betty", Attributes.EyeColour.Brown, Attributes.HairColour.Red, 13);
+            var betty = new Student(bettyAttributes);
             _school.AddStudent(betty);
             
             _school.RemoveStudent(betty.Attributes);
@@ -44,25 +44,26 @@ namespace StudentFinder_Tests {
 
         [Fact]
         public void CanParseEyeColour() {
-            string eyes = "blue";
-            Attributes.EyeColour? eyesParsed = Parser.ParseEyes(eyes);
+            const string eyes = "blue";
+            var eyesParsed = Parser.ParseEyes(eyes);
             
             Assert.Equal(Attributes.EyeColour.Blue, eyesParsed);
         }
         
         [Fact]
         public void CanParseHairColour() {
-            string hair = "blonde";
-            Attributes.HairColour? hairParsed = Parser.ParseHair(hair);
+            const string hair = "blonde";
+            var hairParsed = Parser.ParseHair(hair);
             
             Assert.Equal(Attributes.HairColour.Blonde, hairParsed);
         }
 
         [Fact]
         public void CanSearchForStudent() {
-            List<Student> result = new List<Student>();
-            result.Add(new Student(new Attributes("Libby", Attributes.EyeColour.Brown, Attributes.HairColour.Brown, 12)));
-            
+            var result = new List<Student> {
+                new Student(new Attributes("Libby", Attributes.EyeColour.Brown, Attributes.HairColour.Brown, 12))
+            };
+
             Assert.NotStrictEqual(result[0].Attributes, _school.GetMatchingStudents(Attributes.EyeColour.Brown, Attributes.HairColour.Brown)[0].Attributes);
         }
     }

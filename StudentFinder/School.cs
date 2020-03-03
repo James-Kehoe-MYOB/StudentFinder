@@ -10,7 +10,7 @@ namespace StudentFinder {
         }
 
         public List<Student> GetMatchingStudents(Attributes.EyeColour eyes, Attributes.HairColour hair) {
-            IEnumerable<Student> results = Students.Where(m => m.Attributes.Eyes == eyes).Where(m => m.Attributes.Hair == hair);
+            var results = Students.Where(m => m.Attributes.Eyes == eyes).Where(m => m.Attributes.Hair == hair);
 
             return results.ToList();
         }

@@ -24,10 +24,10 @@ namespace StudentFinder {
         public int Age { get; private set; }
 
         public Attributes(string name, EyeColour eyes, HairColour hair, int age) {
-            this.Name = name;
-            this.Eyes = eyes;
-            this.Hair = hair;
-            this.Age = age;
+            Name = name;
+            Eyes = eyes;
+            Hair = hair;
+            Age = age;
         }
         
     }

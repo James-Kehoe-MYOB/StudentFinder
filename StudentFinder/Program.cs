@@ -14,10 +14,10 @@ namespace StudentFinder {
 //-----------------------------
 
         private static School InitSchool() {
-            var data = "../../../TestData.csv";
-            CreateStudentHelper studentHelper = new CreateStudentHelper(data);
-            List<Student> students = studentHelper.ProcessStudents();
-            School school = new School(students);
+            const string data = "../../../TestData.csv";
+            var studentHelper = new CreateStudentHelper(data);
+            var students = studentHelper.ProcessStudents();
+            var school = new School(students);
             return school;
         }
         

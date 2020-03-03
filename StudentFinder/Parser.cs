@@ -7,7 +7,7 @@ namespace StudentFinder {
         }
 
         public static Attributes.EyeColour? ParseEyes(string eyes) {
-            if (Attributes.EyeColour.TryParse(eyes, true, out Attributes.EyeColour eyesParsed)) {
+            if (Enum.TryParse(eyes, true, out Attributes.EyeColour eyesParsed)) {
                 return eyesParsed;
             }
             
@@ -15,7 +15,7 @@ namespace StudentFinder {
         }
         
         public static Attributes.HairColour? ParseHair(string hair) {
-            if (Attributes.HairColour.TryParse(hair, true, out Attributes.HairColour hairParsed)) {
+            if (Enum.TryParse(hair, true, out Attributes.HairColour hairParsed)) {
                 return hairParsed;
             }
             return null;
